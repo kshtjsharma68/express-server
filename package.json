@@ -1,0 +1,19 @@
+{
+  "name": "mean",
+  "version": "1.0.0",
+  "description": "simple nodejs crude",
+  "main": "app.js",
+  "scripts": {
+    "test": "kshitij sharma"
+  },
+  "dependencies" : {
+    "express": "*",
+    "body-parser" : "*",
+    "mongoose": "*"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "kshitij sharma",
+  "license": "ISC"
+}
