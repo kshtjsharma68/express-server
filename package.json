@@ -6,9 +6,9 @@
   "scripts": {
     "test": "kshitij sharma"
   },
-  "dependencies" : {
+  "dependencies": {
     "express": "*",
-    "body-parser" : "*",
+    "body-parser": "*",
     "mongoose": "*"
   },
   "keywords": [
