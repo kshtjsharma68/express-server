@@ -6,10 +6,13 @@
   "scripts": {
     "test": "kshitij sharma"
   },
-  "dependencies" : {
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "*",
+    "connect-mongo": "^2.0.1",
     "express": "*",
-    "body-parser" : "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "parser": "babel-eslint"
   },
   "keywords": [
     "test"
