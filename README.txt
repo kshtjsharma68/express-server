@@ -5,3 +5,12 @@ node index.js   --( index file )
 Use nodemon
 npm install nodemon
 
+## mongodb commands
+use <dbname>   // create new db if not present
+
+db.createCollection('genere')  // create new table
+
+db.collection.help() // for all collection related commands
+
+show collections    // view all tables in db
+

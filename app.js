@@ -35,5 +35,7 @@ app.get('/', function(req, res) {
 
 require('./app/routes/note.routes.js')(app);
 
+require('./app/routes/genre.routes.js')(app);
+
 app.listen(3000);
 console.log('Running on port.....')
