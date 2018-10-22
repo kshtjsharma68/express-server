@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 //create express app
 var app = express();
 var bodyParser = require('body-parser');
@@ -6,10 +7,10 @@ var mongoose = require('mongoose');
 
 const dbConfig = require('./config/database.config.js')
 
+//initializing session
 //parse requests of content-type- application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(session({ token: '', secret: 'keyboard', resave: false,saveUninitialized: true }), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 
-app.use(bodyParser.json())
 //connect to mongoose
 
 // mongoose.connect('mongodb://localhost/bookstore');
@@ -30,8 +31,10 @@ var db = mongoose.connect(dbConfig.url, {
 * .get(), .post()
 */
 app.get('/', function(req, res) {
-	res.send('Please use /api/books or /api/genre');
+	res.send('App is working...');
 });
+
+require('./app/Modules/Login/login.routes.js')(app);
 
 require('./app/routes/note.routes.js')(app);
 
