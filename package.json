@@ -11,8 +11,8 @@
     "body-parser": "*",
     "connect-mongo": "^2.0.1",
     "express": "*",
-    "mongoose": "*",
-    "parser": "babel-eslint"
+    "express-session": "^1.15.6",
+    "mongoose": "*"
   },
   "keywords": [
     "test"
