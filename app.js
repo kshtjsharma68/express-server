@@ -33,6 +33,7 @@ app.get('/', function(req, res) {
 	res.send('Please use /api/books or /api/genre');
 });
 
+//require notes routes
 require('./app/routes/note.routes.js')(app);
 
 app.listen(3000);
