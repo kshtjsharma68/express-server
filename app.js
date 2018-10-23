@@ -4,12 +4,14 @@ var session = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+require('dotenv').config();
 
 const dbConfig = require('./config/database.config.js')
 
+const port = process.env.PORT || 4000;
 //initializing session
 //parse requests of content-type- application/x-www-form-urlencoded
-app.use(session({ token: '', secret: 'keyboard', resave: false,saveUninitialized: true }), bodyParser.urlencoded({ extended: true }), bodyParser.json());
+app.use(session({ token: '', secret: 'keyboard', resave: false, saveUninitialized: true }), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 
 //connect to mongoose
 
@@ -23,7 +25,6 @@ var db = mongoose.connect(dbConfig.url, {
 			console.log('Could not connect to the database. Exiting now...', err);
     		process.exit();
 		});
-
 
 // to handle request
 /**
@@ -43,5 +44,5 @@ require('./app/routes/note.routes.js')(app);
 
 require('./app/routes/genre.routes.js')(app);
 
-app.listen(3000);
+app.listen(port);
 console.log('Running on port.....')

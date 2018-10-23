@@ -10,6 +10,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "*",
     "connect-mongo": "^2.0.1",
+    "dotenv": "^6.1.0",
     "express": "*",
     "express-session": "^1.15.6",
     "mongoose": "*"

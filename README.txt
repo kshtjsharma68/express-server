@@ -14,3 +14,7 @@ db.collection.help() // for all collection related commands
 
 show collections    // view all tables in db
 
+
+
+//npm install dotenv --save    // to read external env variables in the files
+
