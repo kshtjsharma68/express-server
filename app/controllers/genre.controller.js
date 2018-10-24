@@ -37,7 +37,7 @@ exports.getAll = (req, res) => {
 			res.status(500).send({
 				message: "Error while fetching the records of genre"
 			});
-		})
+		});
 };
 
 //getting preticular genre record

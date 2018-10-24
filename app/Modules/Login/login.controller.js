@@ -210,7 +210,7 @@ exports.Users = (req, res, next) => {
 				message: 'No data found'
 			});
 		}
-		return res.status(200).json({
+		return res.status(200).send({
 			message: 'Data found',
 			data: users
 		});
