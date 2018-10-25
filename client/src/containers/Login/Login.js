@@ -38,25 +38,32 @@ class Login extends Component {
 		// 	.catch(err => {
 		// 		console.log('err', err)
 		// 	});
-		axios.get('/api/users')
-		.then(res => res.data)
-		.then(res => {
-			let { data } = res; console.info(data)
-			this.setState({
-				isLoaded: true,
-				users: data
+		const { users } = this.state;
+		if (!users.length) {
+			axios.get('/api/users')
+			.then(res => res.data)
+			.then(res => {
+				let { data } = res; console.info(data)
+				this.setState({
+					isLoaded: true,
+					users: data
+				});
+			})
+			.catch(err => {
+				console.log('err', err)
+				return false;
 			});
-		})
-		.catch(err => {
-			console.log('err', err)
-			return false;
-		});
+		} else {
+			this.setState({
+				isLoaded: true
+			});
+		}
+		
 	}
 
 	removeData = _ => {
 		this.setState({
-			isLoaded: false,
-			users: []
+			isLoaded: false
 		})
 	}
 
