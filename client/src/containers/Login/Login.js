@@ -43,7 +43,7 @@ class Login extends Component {
 			axios.get('/api/users')
 			.then(res => res.data)
 			.then(res => {
-				let { data } = res; console.info(data)
+				let { data } = res;
 				this.setState({
 					isLoaded: true,
 					users: data
@@ -73,16 +73,20 @@ class Login extends Component {
 
 		if(!isLoaded) {
 			return(
-					<div>
+				<div>
+					<div className="LoginContainer">
 						<h3>App is loading...</h3>
 						 <Button bsStyle="primary" size={size} onClick={this.fetchData.bind(this)}>click here
 						 </Button> 
 					</div>
+					<div>
+					</div>
+				</div>
 				);
 		}
 
 		return (
-				<div>
+				<div className="LoginContainer">
 					<ol>
 						{ users.map( user => 
 							<li key={user._id}>{user.email}  {user.password}</li>
