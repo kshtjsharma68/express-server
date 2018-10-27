@@ -1,20 +1,48 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField'
+
 // import { Button, FormGroup, FormControl, ControlLabel  } from "react-bootsrap";
 import "./Login.css";
+
+//style
+const style = {
+		 margin: 15,
+		};
+
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isLoaded: false,
-			users: [],
-			size: 'small'
+			isLogged: false,
+			username: '',
+			password: ''			
 		}; 
 
 		this.removeData = this.removeData.bind(this);
+		this.sendApiRequest = this.sendApiRequest.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	sendApiRequest = ({ url, payload, ...rest}) => {
+		try{
+			console.log(`${url}`, payload)
+			axios.get(url)
+			.then(res => res.json())
+			.then(res => console.log(res))
+			.catch(err => {
+				//throw exception on error
+				throw err.message;
+			});
+		} catch(err) {
+			throw err;
+		}	
 	}
 
 	fetchData = _ => {
@@ -67,11 +95,27 @@ class Login extends Component {
 		})
 	}
 
+	handleClick = e => {
+	const { username, password } = this.state;
+		var payload = {
+			'email': username,
+			'password': password
+		};
+		let data = { url: '/api/signup', payload };
+		this.sendApiRequest({...data});
+	}
+
+	setStateDataWithIndex = ( index, value ) => {
+		this.setState({
+			index: value
+		}); 
+	}
+
 	render() {
 
-		const { isLoaded, users, size } = this.state;
+		const { isLogged, users, size } = this.state;
 
-		if(!isLoaded) {
+		if(isLogged) {
 			return(
 				<div>
 					<div className="LoginContainer">
@@ -86,14 +130,29 @@ class Login extends Component {
 		}
 
 		return (
-				<div className="LoginContainer">
-					<ol>
-						{ users.map( user => 
-							<li key={user._id}>{user.email}  {user.password}</li>
-						)}
-					</ol>	
-					<Button onClick={this.removeData}>Remove data</Button>
-				</div>
+				<div>
+			        <MuiThemeProvider>
+			          <div>
+			          <AppBar
+			             title="Login"
+			           />
+			           <TextField
+			             hintText="Enter your Username"
+			             floatingLabelText="Username"
+			             onChange = {(event,newValue) => this.setStateDataWithIndex('username', newValue)}
+			             />
+			           <br/>
+			             <TextField
+			               type="password"
+			               hintText="Enter your Password"
+			               floatingLabelText="Password"
+			               onChange = {(event,newValue) => this.setStateDataWithIndex('password', newValue)}
+			               />
+			             <br/>
+			             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+			         </div>
+			         </MuiThemeProvider>
+			      </div>
 			);
 	}
 }
