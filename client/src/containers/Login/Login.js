@@ -31,18 +31,17 @@ class Login extends Component {
 	}
 
 	sendApiRequest = ({ url, payload, ...rest}) => {
-		try{
-			console.log(`${url}`, payload)
 			axios.get(url)
 			.then(res => res.json())
 			.then(res => console.log(res))
 			.catch(err => {
 				//throw exception on error
-				throw err.message;
-			});
-		} catch(err) {
-			throw err;
-		}	
+				console.log(err)
+			});	
+			fetch(url)
+			.then(res => console.log('fetch', res))
+			.catch(err => console.log('fetch-err', err))
+			.finally(console.log('finally'))
 	}
 
 	fetchData = _ => {
