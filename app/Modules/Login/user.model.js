@@ -19,12 +19,8 @@ const userSchema = new mongoose.Schema({
 			default: ''
 		},
 		isDeleted: {
-			type: String,
-			default: ''
-		},
-		firstName: {
-			type: String,
-			default: ''
+			type: Boolean,
+			default: false
 		}
 	});
 

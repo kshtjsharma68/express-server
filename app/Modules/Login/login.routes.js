@@ -15,4 +15,7 @@ module.exports = (app) => {
 
 	//Logout
 	app.get('/api/logout', login.Logout);
+
+	//get all users
+	app.get('/api/users', login.Users);
 }

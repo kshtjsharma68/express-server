@@ -202,6 +202,26 @@ exports.Logout = (req, res, next) => {
 	}) 
 };
 
+exports.Users = (req, res, next) => {
+	User.find()
+	.then(users => {
+		if (!users.length) {
+			return res.status(400).send({
+				message: 'No data found'
+			});
+		}
+		return res.status(200).send({
+			message: 'Data found',
+			data: users
+		});
+	})
+	.catch(err => {
+		return res.status(500).send({
+			message: err.message || 'Server error'
+		});
+	});
+};
+
 function checkValidity(parameter, res) {
 	if (!parameter) {
 		return res.status(404).send({
