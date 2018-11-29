@@ -1,5 +1,5 @@
-const User = require('./user.model.js');
-const userSession = require('./userSession.model.js');
+const User = require('../../models/user.model.js');
+const userSession = require('../../models/userSession.model.js');
 
 exports.signUp = (req, res) => {
 	const {body} = req;

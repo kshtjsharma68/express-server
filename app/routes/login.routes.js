@@ -1,7 +1,7 @@
 
 //Login routes for process
 module.exports = (app) => {
-	const login = require('./login.controller.js');
+	const login = require('../Modules/Login/login.controller.js');
 
 	app.get('/api/signin', login.signIn);
 

@@ -13,7 +13,8 @@
     "dotenv": "^6.1.0",
     "express": "*",
     "express-session": "^1.15.6",
-    "mongoose": "*"
+    "mongoose": "*",
+    "pug": "^2.0.3"
   },
   "keywords": [
     "test"

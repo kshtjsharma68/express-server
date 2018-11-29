@@ -26,19 +26,26 @@ var db = mongoose.connect(dbConfig.url, {
     		process.exit();
 		});
 
+
+//Set pug view engine
+app.set('views', './app/views');
+app.set('view engine', 'pug');
+
 // to handle request
 /**
 *  can take any type of request
 * .get(), .post()
 */
 app.get('/', function(req, res) {
-	res.send('App is working...');
+	// res.send('App is working...');
+	res.setHeader("Content-Type", "text/html");
+	res.render('index',{ title: 'First page', message: 'Hello World!' });
 });
 
 
 //require notes routes
 
-require('./app/Modules/Login/login.routes.js')(app);
+require('./app/routes/login.routes.js')(app);
 
 require('./app/routes/note.routes.js')(app);
 
